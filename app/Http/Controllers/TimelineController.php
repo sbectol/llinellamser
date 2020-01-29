@@ -49,9 +49,9 @@ class TimelineController extends Controller
         $data->title = request('title');
         $data->title_cym = request('title_cym');
         $data->asset_type = request('asset_type');
-        $data->asset = "storage/files/"+ request('asset');
-        $data->image = "storage/files/"+ request('image');
-        $data->asset_cym = "storage/files"+ request('asset_cym');
+        $data->asset = request('asset');
+        $data->image = request('image');
+        $data->asset_cym = request('asset_cym');
         $data->dyddiad = request('dyddiad');
         // $data->show_title = isset($request['show_title']) ? 1 : 0;
 
@@ -99,6 +99,7 @@ class TimelineController extends Controller
         $data['title'] = request('title');
         $data['title_cym'] = request('title_cym');
         $data['dyddiad'] = request('dyddiad');
+        $data['image'] = request('image');
 
        $data['asset'] = request('asset');
        $data['asset_cym'] = request('asset_cym');

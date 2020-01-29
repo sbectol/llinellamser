@@ -68,6 +68,38 @@
         <input id="asset_cym" type="hidden" name="asset_cym" value=""/>
         <input id="image" type="hidden" name="image" value=""/>
         </form>
+
+        <div class="card-header">Ffeilau / Current Files
+        <div class="row">
+            <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                <div class="card-title">Ffeil Saesneg / English Language File</div>
+                <div class="card-text">{{$timeline->asset}}</div>
+                <audio controls>
+                    <source src={{asset($timeline->asset)}}>
+                    </audio>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                <h class="card-title">Ffeil Cymraeg / Welsh Language File</h>
+                <p class="card-text">{{$timeline->asset_cym}}</p>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                <div class="card-title">Llun / Image</div>
+                <div class="card-img-bottom"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
         <div class="card-header">Ailosod Ffeilau / Update Files</div>
         <div class="form-group row mb-0" id="file">
             <div class="col">

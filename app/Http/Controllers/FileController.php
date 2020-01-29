@@ -42,7 +42,7 @@ class FileController extends Controller
 
       return response()->json([
         'id' => $upload->id,
-        'filename' => $filename
+        'filename' => "storage/files/". $filename
       ]);
     }
 }
