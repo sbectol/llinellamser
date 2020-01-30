@@ -75,10 +75,14 @@
             <div class="card">
                 <div class="card-body">
                 <div class="card-title">Ffeil Saesneg / English Language File</div>
-                <div class="card-text">{{$timeline->asset}}</div>
-                <audio controls>
+                <div class="card-text">@php echo substr($timeline->asset,14) @endphp</div>
+                @if ($timeline->asset_type == 'audio') <audio controls>
                     <source src={{asset($timeline->asset)}}>
                     </audio>
+                @else <video controls width='405'>
+                            <source src="{{asset($timeline->asset)}}">
+                            </video>
+                @endif
                 </div>
             </div>
             </div>
@@ -86,7 +90,14 @@
             <div class="card">
                 <div class="card-body">
                 <h class="card-title">Ffeil Cymraeg / Welsh Language File</h>
-                <p class="card-text">{{$timeline->asset_cym}}</p>
+                <p class="card-text">@php echo substr($timeline->asset_cym,14) @endphp</p>
+                @if ($timeline->asset_type == 'audio') <audio controls>
+                    <source src={{asset($timeline->asset_cym)}}>
+                    </audio>
+                @else <video controls width='405'>
+                            <source src="{{asset($timeline->asset_cym)}}">
+                            </video>
+                @endif
                 </div>
             </div>
             </div>
