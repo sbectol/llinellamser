@@ -9,6 +9,6 @@ class Timeline extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title','title_cym', 'dyddiad', 'image', 'asset_type'
+        'title','title_cym', 'dyddiad', 'image', 'asset_type', 'asset', 'asset_cym'
       ];
 }

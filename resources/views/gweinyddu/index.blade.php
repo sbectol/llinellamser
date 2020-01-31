@@ -17,7 +17,7 @@
                     <a href="/gweinyddu/uchwanegu"><i class="fas fa-plus"></i></a>
                     <ul>
                     @foreach ($timeline as $key=>$input)
-                        <li>{{$timeline[$key]->dyddiad}} - {{$timeline[$key]->title_cym}} <a href="/gweinyddu/golygu/{{ $timeline[$key]->id }}"><i class="fas fa-edit"></i></a> <a href="/gweinyddu/dileu/{{ $timeline[$key]->id }}"><i class="fas fa-trash"></i></a></li>
+                        <li>{{$timeline[$key]->dyddiad}} - {{$timeline[$key]->title_cym}} <a href="/gweinyddu/golygu/{{ $timeline[$key]->id }}"><i class="fas fa-edit"></i></a> <a href="/gweinyddu/dileu/{{ $timeline[$key]->id }}"><i class="fas fa-trash-alt"></i></a></li>
 
                     @endforeach
                     </ul>

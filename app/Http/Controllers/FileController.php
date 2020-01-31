@@ -18,7 +18,7 @@ class FileController extends Controller
         'title' => $request->get('title')
       ]);
 
-      return back()->with('message', 'Your file is submitted Successfully');
+      return back();
     }
 
     public function upload(Request $request)

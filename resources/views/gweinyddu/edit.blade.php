@@ -70,71 +70,74 @@
         </form>
 
         <div class="card-header">Ffeilau / Current Files
-        <div  id="accordion">
-            <button class="btn btn-outline-secondary btn-sm" type="button" 
+            <div id="accordion">   
+                <button class="btn btn-outline-secondary btn-sm" type="button" 
                 data-toggle="collapse" data-target="#ffeilSaesneg" aria-expanded="false" aria-controls="ffeilSaesneg">
                 Ffeil Saesneg <br /> / English Language File
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" type="button" 
-                data-toggle="collapse" data-target="#ffeilCym" aria-expanded="false" aria-controls="ffeilCym">
-                Ffeil Cymraeg <br /> / Welsh Language File
-            </button>
-            <button class="btn btn-outline-secondary btn-sm" type="button" 
-                data-toggle="collapse" data-target="#llun" aria-expanded="false" aria-controls="llun">
-                Llun <br /> / Image
-            </button>
-            
-            <div class="collapse" id="ffeilSaesneg" data-parent="#accordion">
-            <div class="card">
-                <div class="card-body">
-                <div class="card-title">Ffeil Saesneg / English Language File</div>
-                <div class="card-text">@php echo substr($timeline->asset,14) @endphp</div>
-                @if ($timeline->asset_type == 'audio') <audio controls>
-                    <source src="{{asset($timeline->asset)}}">
-                    </audio>
-                @elseif ($timeline->asset_type == 'video') <video controls width='405'>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" type="button" 
+                    data-toggle="collapse" data-target="#ffeilCym" aria-expanded="false" aria-controls="ffeilCym">
+                    Ffeil Cymraeg <br /> / Welsh Language File
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" type="button" 
+                    data-toggle="collapse" data-target="#llun" aria-expanded="false" aria-controls="llun">
+                    Llun <br /> / Image
+                </button>
+                
+                <div class="collapse" id="ffeilSaesneg" data-parent="#accordion">
+                    <div class="card">
+                        <div class="card-body">
+                            <button class="btn btn-danger btn-lg" type="button"><i class="fas fa-trash-alt"> Dileu / Delete</i>
+                            </button>
+                        </div>
+                        <div class="card-title">Ffeil Saesneg / English Language File</div>
+                        <div class="card-text">@php echo substr($timeline->asset,14) @endphp</div>
+                        @if ($timeline->asset_type == 'audio')
+                            <audio controls>
+                            <source src="{{asset($timeline->asset)}}">
+                            </audio>
+                        @elseif ($timeline->asset_type == 'video')
+                            <video controls width='405'>
                             <source src="{{asset($timeline->asset)}}">
                             </video>
-                @else <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
-                @endif
+                        @else
+                            <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
+                        @endif
+                    </div>
                 </div>
-            </div>
-            </div>
             
             <div class="collapse" id="ffeilCym" data-parent="#accordion">
-            <div class="card">
-                <div class="card-body">
-                <h class="card-title">Ffeil Cymraeg / Welsh Language File</h>
-                <p class="card-text">@php echo substr($timeline->asset_cym,14) @endphp</p>
-                @if ($timeline->asset_type == 'audio') <audio controls>
-                    <source src="{{asset($timeline->asset_cym)}}">
-                    </audio>
-                @elseif ($timeline->asset_type == 'video') <video controls width='405'>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">Ffeil Cymraeg / Welsh Language File</div>
+                        <p class="card-text">@php echo substr($timeline->asset_cym,14) @endphp</p>
+                        @if ($timeline->asset_type == 'audio')
+                            <audio controls>
+                            <source src="{{asset($timeline->asset_cym)}}">
+                            </audio>
+                        @elseif ($timeline->asset_type == 'video')
+                            <video controls width='405'>
                             <source src="{{asset($timeline->asset_cym)}}">
                             </video>
-                @else <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
-                @endif
+                        @else
+                            <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
+                        @endif
+                    </div>
                 </div>
             </div>
-            </div>
-    
            
-        </p>
-        
-            
-            
-            
-            <div class="collapse" id="llun"data-parent="#accordion">
-            <div class="card">
-                <div class="card-body">
-                <div class="card-title">Llun / Image</div>
-                <p class="card-text">@php echo substr($timeline->image,14) @endphp</p>
-                <img class="card-img-bottom" src="{{asset($timeline->image)}}">
+            <div class="collapse" id="llun" data-parent="#accordion">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">Llun / Image</div>
+                        <p class="card-text">@php echo substr($timeline->image,14) @endphp</p>
+                        <img class="card-img-bottom" src="{{asset($timeline->image)}}">
+                    </div>
                 </div>
             </div>
-            </div>
+
         </div>
-        </div>
+    
         <div class="card-header">Ailosod Ffeilau / Update Files</div>
         <div class="form-group row mb-0" id="file">
             <div class="col">
