@@ -158,9 +158,11 @@
                             </div>
                             <div id="picture">
                                  <div class="card-text">@php echo substr($timeline->image,14) @endphp
-                                </div>
+                                 </div>
                                 @if ($timeline->image)
                                 <img class="card-img-bottom" src="{{asset($timeline->image)}}">
+                                @else
+                                <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
                                 @endif
                             </div>
                         </div>
@@ -185,7 +187,7 @@
             </form>
             </div>
             <div class="col">
-                <div class="card-header">Llun / Image</div>
+                <div class="card-header">Llun  / Image</div>
             <form method="post" action="{{route('upload')}}" enctype="multipart/form-data" class="dropzone" id="dropzone3">
             @csrf
             </form>

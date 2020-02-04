@@ -383,7 +383,7 @@ function startShow() {
 			crop : fit_to_window(myevents[currentId].width, myevents[currentId].height, w, h),
 			width : w,
 			height : h,
-			blurRadius : 20
+			blurRadius : 16
 		});
 
 	bg.cache();
@@ -548,7 +548,7 @@ function startShow() {
 			layer.add(dateText);
 		}
 
-		if (myevents[i].asset_type == "audio") {
+		if (myevents[i].asset_type == "audtest") {
 			var audio_tab = new Kinetic.Group({
 			id: i});
 			if (w>=h   ) {
@@ -802,11 +802,11 @@ function startShow() {
 
 			});
 		}
-		if (myevents[i].asset_type == "image" || myevents[i].asset_type == "video") {
+		if (myevents[i].asset_type == "image" || myevents[i].asset_type == "video" || myevents[i].asset_type =="audio" ) {
 
 			if(w>=h   ){
-				var imagewidth = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 10*unit, 10*unit).x
-				var imageheight = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 10*unit, 10*unit).y
+				var imagewidth = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 8*unit, 8*unit).x
+				var imageheight = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 8*unit, 8*unit).y
 				var tipX = current_pos + linelength + 2*unit;
 
 				var minX = tipX - imagewidth / 2;
@@ -933,7 +933,7 @@ function startShow() {
 			text: '\uf01d',
 			fill : 'green',
 			fontSize : 1.8*unit,
-			opacity : 0.5
+			opacity : 0.8
 
 
 			});
@@ -943,6 +943,25 @@ function startShow() {
 
 			}
 			layer.draw();
+
+			if (myevents[i].asset_type == 'audio') {
+				var audio_icon = new Kinetic.Text({
+					x : imageX + imagewidth /2,
+					y : imageY + imageheight /2,
+					text : '\uf028',
+					fill : 'green',
+					fontFamily : 'FontAwesome',
+					fontSize : 1.8*unit,
+					opacity: 0.8
+				});
+
+				audio_icon.offsetX(audio_icon.width() / 2)
+				audio_icon.offsetY(audio_icon.height() / 2)
+				vid_group.add(audio_icon);
+
+			}
+			layer.draw();
+			
 
 			vid_group.on('mousedown touchstart', function () {
 				newx = calculateAspectRatioFit(myevents[this.getId()].width, myevents[this.getId()].height, w, h - h / 3).x
