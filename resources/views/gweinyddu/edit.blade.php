@@ -39,31 +39,18 @@
         </div>
 
         <div class="form-group row">
-            <label for="asset_type" class="col-md-2 col-form-label text-md-right">Math / Type</label>
+            <label for="asset_type" class="col-md-2 col-form-label text-md-right">Math / Type {{$timeline->asset_type}}</label>
 
-            <div class="col-md-10">
-                <select id="asset_type" rows="10" class="form-control" name="asset_type" value="">
-                    <option @if($timeline->asset_type =='audio') selected @endif value="audio">Sain / Audio</option>
-                    <option @if($timeline->asset_type =='video') selected @endif value="video">Fideo / Video</option>
-                    <option @if($timeline->asset_type =='image') selected @endif value="image">Llun / Picture</option>
-                    <option @if($timeline->asset_type =='text') selected @endif value="text">Testun / Text</option>
-
-                </select>
-
-            </div>
+          
         </div>
-
-
-
-
-
-
 
         <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-2">
                     <button type="submit" class="btn btn-primary btn-lg mb-4">Save</button>
                 </div>
             </div>
+
+        <input id="asset_type" type="hidden" name="asset_type" value="{{$timeline->asset_type}}"/>
         <input id="asset" type="hidden" name="asset" value="{{$timeline->asset}}"/>
         <input id="asset_cym" type="hidden" name="asset_cym" value="{{$timeline->asset_cym}}"/>
         <input id="image" type="hidden" name="image" value="{{$timeline->image}}"/>
@@ -94,6 +81,7 @@
                             @endif
                             <div class="card-title"> Ffeil Saesneg / English Language File 
                                 </div>
+                            @if ($timeline->asset)
                             <div id="englishfile">
                                 
                                 
@@ -103,14 +91,16 @@
                                 <audio controls>
                                 <source src="{{asset($timeline->asset)}}">
                                 </audio>
-                                 @elseif ($timeline->asset_type == 'video')
+                                 @else ($timeline->asset_type == 'video')
                                  <video controls width='405'>
                                 <source src="{{asset($timeline->asset)}}">
                                 </video>
-                                @else
-                                <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
-                                 @endif
+                                @endif
                             </div>
+                            @else
+                            <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
+                            @endif
+                            
                         </div>
                     </div>
                 </div>
@@ -126,6 +116,7 @@
                             
                             <div class="card-title"> Ffeil Cymraeg / Welsh Language File
                             </div>
+                            @if ($timeline->asset_cym)
                             <div id="welshfile">
                                 <div class="card-text">@php echo substr($timeline->asset_cym,14) @endphp
                                 </div>
@@ -133,15 +124,16 @@
                                 <audio controls>
                                 <source src="{{asset($timeline->asset_cym)}}">
                                 </audio>
-                                @elseif ($timeline->asset_type == 'video')
+                                @else ($timeline->asset_type == 'video')
                                 <video controls width='405'>
                                  <source src="{{asset($timeline->asset_cym)}}">
                                 </video>
-                                @else
-                                <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
                                 @endif
                             </div>
-                        </div>
+                            @else
+                            <p class="card-text">Dim ffeil ar hyn o bryd. / No current file.</p>
+                             @endif
+                         </div>
                     </div>
                 </div>
            
@@ -203,12 +195,13 @@
                     this.removeAllFiles();
                     this.addFile(file);
                 });
-            }, acceptedFiles: ".jpeg,.jpg,.png,.gif,.mp3",
+            }, acceptedFiles: ".mp3,.mp4",
                 addRemoveLinks: true,
                 timeout: 60000,
                 success: function (file, response) {
                     console.log(response.filename);
                     document.getElementById("asset").value=response.filename;
+                    assetChecker();
 
                 },
                 error: function (file, response) {
@@ -217,6 +210,7 @@
                 };
         </script>
         <script type="text/javascript">
+
             Dropzone.options.dropzone2 =
             { maxFiles:1,
             init: function() {
@@ -224,13 +218,13 @@
                     this.removeAllFiles();
                     this.addFile(file);
                 });
-            }, acceptedFiles: ".jpeg,.jpg,.png,.gif,.mp3",
+            }, acceptedFiles: ".mp3,.mp4",
                 addRemoveLinks: true,
                 timeout: 60000,
                 success: function (file, response) {
                     console.log(response.filename);
                     document.getElementById("asset_cym").value=response.filename;
-
+                    assetChecker();
                 },
                 error: function (file, response) {
                     return false;
@@ -251,6 +245,7 @@
                 success: function (file, response) {
                     console.log(response.filename);
                     document.getElementById("image").value=response.filename;
+                    assetChecker();
 
                 },
                 error: function (file, response) {
@@ -259,17 +254,52 @@
                 };
         </script>
         <script type="text/javascript">
+        
             function hideEngFile() {
                 document.getElementById("englishfile").style.display= "none";
                 document.getElementById("asset").value="";
-            };
+                assetChecker();
+                
+                };
             function hideWelshFile() {
                 document.getElementById("welshfile").style.display= "none";
                 document.getElementById("asset_cym").value="";
-            };
+                assetChecker();
+               
+                };
             function hidePicture() {
                 document.getElementById("picture").style.display= "none";
                 document.getElementById("image").value="";
+                assetChecker();
+                
+                 };
+                 </script>
+
+        <script type="text/javascript">
+            function assetChecker() {
+                if (document.getElementById("asset").value) { 
+                    if (document.getElementById("asset").value.endsWith(".mp4")) {
+                        document.getElementById("asset_type").value="video";
+                    }
+                    else 
+                    {
+                        document.getElementById("asset_type").value="audio";
+                    }
+                }
+                else if (document.getElementById("asset_cym").value) {
+                    if (document.getElementById("asset_cym").value.endsWith(".mp4")) {
+                        document.getElementById("asset_type").value="video";
+                    }
+                    else
+                    {
+                        document.getElementById("asset_type").value="audio";
+                    }
+                }
+                else { 
+                    if (document.getElementById("image") != "defaultimage") {
+                        document.getElementById("asset_type").value="image";
+                        }
+                    }   
             };
         </script>
                 </div>
