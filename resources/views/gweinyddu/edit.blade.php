@@ -3,6 +3,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+         <!-- displays errors -->
+         @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+        @endif
             <div class="card">
                 <div class="card-header">Golygu Diwgyddiad / Edit Event</div>
 
@@ -38,11 +48,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
-            <label for="asset_type" class="col-md-2 col-form-label text-md-right">Math / Type {{$timeline->asset_type}}</label>
-
-          
-        </div>
+        
 
         <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-2">
@@ -189,7 +195,10 @@
 
         <script type="text/javascript">
             Dropzone.options.dropzone =
-            { maxFiles:1,
+            { dictDefaultMessage:"Drop file here to upload. / tobetranslated",
+                dictRemoveFile : "Remove file / tobetranslated",
+                dictCancelUpload : "Cancel / Canslo",
+                maxFiles:1,
             init: function() {
                 this.on("maxfilesexceeded", function(file) {
                     this.removeAllFiles();
@@ -212,7 +221,10 @@
         <script type="text/javascript">
 
             Dropzone.options.dropzone2 =
-            { maxFiles:1,
+            { dictDefaultMessage:"Drop file here to upload. / tobetranslated",
+                dictRemoveFile : "Remove file / tobetranslated",
+                dictCancelUpload : "Cancel / Canslo",
+                maxFiles:1,
             init: function() {
                 this.on("maxfilesexceeded", function(file) {
                     this.removeAllFiles();
@@ -233,13 +245,16 @@
         </script>
         <script type="text/javascript">
             Dropzone.options.dropzone3 =
-            { maxFiles:1,
+            { dictDefaultMessage:"Drop file here to upload. / tobetranslated",
+                dictRemoveFile : "Remove file / tobetranslated",
+                dictCancelUpload : "Cancel / Canslo",
+                maxFiles:1,
             init: function() {
                 this.on("maxfilesexceeded", function(file) {
                     this.removeAllFiles();
                     this.addFile(file);
                 });
-            }, acceptedFiles: ".jpeg,.jpg,.png,.gif,.mp3",
+            }, acceptedFiles: ".jpeg,.jpg,.png,.gif",
                 addRemoveLinks: true,
                 timeout: 60000,
                 success: function (file, response) {
@@ -269,7 +284,7 @@
                 };
             function hidePicture() {
                 document.getElementById("picture").style.display= "none";
-                document.getElementById("image").value="";
+                document.getElementById("image").value="storage/files/llythyr-papur.jpg";
                 assetChecker();
                 
                  };
@@ -278,7 +293,7 @@
         <script type="text/javascript">
             function assetChecker() {
                 if (document.getElementById("asset").value) { 
-                    if (document.getElementById("asset").value.endsWith(".mp4")) {
+                    if (document.getElementById("asset").value.toLowerCase().endsWith(".mp4")) {
                         document.getElementById("asset_type").value="video";
                     }
                     else 
@@ -287,7 +302,7 @@
                     }
                 }
                 else if (document.getElementById("asset_cym").value) {
-                    if (document.getElementById("asset_cym").value.endsWith(".mp4")) {
+                    if (document.getElementById("asset_cym").value.toLowerCase().endsWith(".mp4")) {
                         document.getElementById("asset_type").value="video";
                     }
                     else
@@ -296,9 +311,12 @@
                     }
                 }
                 else { 
-                    if (document.getElementById("image") != "defaultimage") {
+                    if (document.getElementById("image").value != "storage/files/llythyr-papur.jpg") {
                         document.getElementById("asset_type").value="image";
                         }
+                    else
+                    { document.getElementById("asset_type").value="text";
+                    }
                     }   
             };
         </script>

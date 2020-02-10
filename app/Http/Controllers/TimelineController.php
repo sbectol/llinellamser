@@ -44,7 +44,23 @@ class TimelineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {  
+        if ($request->input('asset_type') == 'audio') {
+            $request->validate([
+                'asset' => 'nullable|ends_with:mp3,MP3,Mp3,mP3',
+                'asset_cym' => 'nullable|ends_with:mp3,MP3,mP3,Mp3',
+                ]);
+            }
+        elseif ($request->input('asset_type') == 'video') {
+                $request->validate([
+                    'asset' => 'nullable|ends_with:mp4,MP4,Mp4,mP4',
+                    'asset_cym' => 'nullable|ends_with:mp4,MP4,Mp4,mP4',
+                    ]);
+                };
+        $request->validate([
+            'dyddiad' => 'required',
+            
+          ]);
         $data = new Timeline;
         $data->title = request('title');
         $data->title_cym = request('title_cym');
@@ -93,7 +109,23 @@ class TimelineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
-    {
+    {  
+        if ($request->input('asset_type') == 'audio') {
+            $request->validate([
+                'asset' => 'nullable|ends_with:mp3,MP3,Mp3,mP3',
+                'asset_cym' => 'nullable|ends_with:mp3,MP3,mP3,Mp3',
+                ]);
+            }
+        elseif ($request->input('asset_type') == 'video') {
+                $request->validate([
+                    'asset' => 'nullable|ends_with:mp4,MP4,Mp4,mP4',
+                    'asset_cym' => 'nullable|ends_with:mp4,MP4,Mp4,mP4',
+                    ]);
+                };
+        $request->validate([
+        'dyddiad' => 'required',
+        
+      ]);
         //$data = $request->all();
 
         $data['title'] = request('title');

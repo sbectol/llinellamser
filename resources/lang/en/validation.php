@@ -96,7 +96,7 @@ return [
     'password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => 'The :attribute is required. Ni all :attribute fod yn wag ',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -133,6 +133,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'asset' => [
+            'ends_with' => 'English and Welsh Language files must be of the same type',
+        ],
+        'asset_cym' => [
+            'ends_with' => "English and Welsh Language files must be of the same type / Rhaid i'r Ffeil Saesneg a Ffeil Cymraeg fod o'r un math"
+        ]
     ],
 
     /*
@@ -146,6 +152,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'dyddiad' => 'Blwyddyn / Year',
+    ],
 
 ];
