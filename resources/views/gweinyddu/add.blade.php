@@ -14,7 +14,7 @@
     </div>
 @endif
             <div class="card">
-                <div class="card-header">Uchwanegu Diwgyddiad / Add Event</div>
+                <div class="card-header">Ychwanegu Digwyddiad / Add Event</div>
 
                 <div class="card-body">
 <form class="form-signin" method="POST" action="/gweinyddu/uchwanegu/">
@@ -59,7 +59,7 @@
 
         <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-2">
-                    <button type="submit" class="btn btn-primary btn-lg mb-4">Save</button>
+                    <button type="submit" class="btn btn-primary btn-lg mb-4">Cadw / Save</button>
                 </div>
             </div>
         <input id="asset_type" type="hidden" name="asset_type" value="text"/>
@@ -67,7 +67,7 @@
         <input id="asset_cym" type="hidden" name="asset_cym" value=""/>
         <input id="image" type="hidden" name="image" value="storage/files/llythyr-papur.jpg"/>
         </form>
-        <div class="card-header mb-2">Uchwanegu Ffeiliau / Add Files</div>
+        <div class="card-header mb-2">Ychwanegu Ffeiliau / Add Files</div>
         <div class="form-group row mb-0" id="file">
             <div class="col">
                 <div class="card-header">Ffeil Saesneg / English Language File</div>
@@ -91,8 +91,8 @@
 
         <script type="text/javascript">
             Dropzone.options.dropzone =
-            { dictDefaultMessage:"Drop file here to upload. / tobetranslated",
-                dictRemoveFile : "Remove file / tobetranslated",
+            { dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
+                dictRemoveFile : "Remove file / Tynnu ffeil",
                 dictCancelUpload : "Cancel / Canslo",
 
                 maxFiles:1,
@@ -118,8 +118,8 @@ init: function() {
 <script type="text/javascript">
     Dropzone.options.dropzone2 =
     {
-        dictDefaultMessage:"Drop file here to upload. / tobetranslated",
-        dictRemoveFile : "Remove file / tobetranslated",
+        dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
+        dictRemoveFile : "Remove file / Tynnu Ffeil",
         dictCancelUpload : "Cancel / Canslo",
         
         
@@ -145,8 +145,8 @@ this.on("maxfilesexceeded", function(file) {
 <script type="text/javascript">
     Dropzone.options.dropzone3 =
     {
-        dictDefaultMessage:"Drop file here to upload. / tobetranslated",
-        dictRemoveFile : "Remove file / tobetranslated",
+        dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
+        dictRemoveFile : "Remove file / Tynnu ffeil",
         dictCancelUpload : "Cancel / Canslo",
         maxFiles:1,
 init: function() {

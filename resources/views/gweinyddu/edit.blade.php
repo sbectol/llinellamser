@@ -14,7 +14,7 @@
     </div>
         @endif
             <div class="card">
-                <div class="card-header">Golygu Diwgyddiad / Edit Event</div>
+                <div class="card-header">Golygu Digwyddiad / Edit Event</div>
 
                 <div class="card-body">
 <form class="form-signin" method="POST" action="/gweinyddu/golygu/{{$timeline->id}}">
@@ -52,7 +52,7 @@
 
         <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-2">
-                    <button type="submit" class="btn btn-primary btn-lg mb-4">Save</button>
+                    <button type="submit" class="btn btn-primary btn-lg mb-4">Cadw / Save</button>
                 </div>
             </div>
 
@@ -62,7 +62,7 @@
         <input id="image" type="hidden" name="image" value="{{$timeline->image}}"/>
         </form>
 
-        <div class="card-header mb-4">Ffeilau / Current Files
+        <div class="card-header mb-4">Ffeiliau Presennol / Current Files
             <div id="accordion">   
                 <button class="btn btn-outline-secondary btn-sm" type="button" 
                 data-toggle="collapse" data-target="#ffeilSaesneg" aria-expanded="false" aria-controls="ffeilSaesneg">
@@ -98,7 +98,7 @@
                                 <source src="{{asset($timeline->asset)}}">
                                 </audio>
                                  @else ($timeline->asset_type == 'video')
-                                 <video controls width='405'>
+                                 <video controls width='100%'>
                                 <source src="{{asset($timeline->asset)}}">
                                 </video>
                                 @endif
@@ -195,8 +195,8 @@
 
         <script type="text/javascript">
             Dropzone.options.dropzone =
-            { dictDefaultMessage:"Drop file here to upload. / tobetranslated",
-                dictRemoveFile : "Remove file / tobetranslated",
+            { dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
+                dictRemoveFile : "Remove file / Tynnu ffeil",
                 dictCancelUpload : "Cancel / Canslo",
                 maxFiles:1,
             init: function() {
@@ -221,8 +221,8 @@
         <script type="text/javascript">
 
             Dropzone.options.dropzone2 =
-            { dictDefaultMessage:"Drop file here to upload. / tobetranslated",
-                dictRemoveFile : "Remove file / tobetranslated",
+            { dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
+                dictRemoveFile : "Remove file / Tynnu ffeil",
                 dictCancelUpload : "Cancel / Canslo",
                 maxFiles:1,
             init: function() {
@@ -245,8 +245,8 @@
         </script>
         <script type="text/javascript">
             Dropzone.options.dropzone3 =
-            { dictDefaultMessage:"Drop file here to upload. / tobetranslated",
-                dictRemoveFile : "Remove file / tobetranslated",
+            { dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
+                dictRemoveFile : "Remove file / Tynnu Ffeil",
                 dictCancelUpload : "Cancel / Canslo",
                 maxFiles:1,
             init: function() {

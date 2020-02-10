@@ -145,7 +145,7 @@ class TimelineController extends Controller
         //update post data
         Timeline::find($id)->update($data);
 
-        return redirect('/gweinyddu');
+        return redirect('/gweinyddu')->with('status', 'Digwyddiad wedi newid yn llwyddiannus / Event changed successfully');
     }
 
     /**
