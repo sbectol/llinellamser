@@ -13,7 +13,8 @@
 
 Route::get('/', 'HomeController@welcome');
 
-Auth::routes();
+Auth::routes(["register"=> false
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/gweinyddu', 'TimelineController@index');

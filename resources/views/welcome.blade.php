@@ -124,7 +124,7 @@ var unit =(Math.max(w/h,h/w) * Math.max(w,h)) / 100
 console.log(unit)
 unit = 20
 //change unit based on screen size etc
-if (w>1600 || h> 900) {
+if (w>1600 || h> 900) { 
 	unit=30
 	}
 if (w <= 640) {
@@ -502,11 +502,12 @@ function startShow() {
 				}
 			} else {
 			dateX = w / 2 + 3.8*unit
-			dateY = current_pos + (2 * unit) + linelength
+			dateY = current_pos + (2 * unit) + linelength + (0.75*unit)
 			if (i % 2 == 1) {
 				dateX = w/2 - 3.8*unit
 				}
 			}
+		
 		var dateText = new Kinetic.Text({
 				x : dateX,
 				y : dateY,
@@ -517,19 +518,23 @@ function startShow() {
 			});
 		dateText.offsetX(dateText.width() / 2);
 		dateText.offsetY(dateText.height() / 2);
-
-		if (i % 2 == 1) {
-		dateY = dateY - 2.5 * unit
-		} else {
-		dateY = dateY + 2.5 * unit
-
+		
+		if (w>h){
+			fontsize=2*unit
+		
+			if (i % 2 == 1) {
+			dateY = dateY - 2.5 * unit
+			} else {
+			dateY = dateY + 2.5 * unit
+			}
 		}
+		else {fontsize=3*unit}
 		if (currentYear != lastYear) {
 			var yearText = new Kinetic.Text({
 					x : dateX ,
 					y : dateY ,
 					text : currentYear,
-					fontSize : 2 * unit,
+					fontSize : fontsize,
 					fontFamily : '"alternate-gothic-no-1-d",impact,sans-serif',
 					fill : 'white'
 				});
@@ -805,8 +810,8 @@ function startShow() {
 		if (myevents[i].asset_type == "image" || myevents[i].asset_type == "video" || myevents[i].asset_type =="audio" ) {
 
 			if(w>=h   ){
-				var imagewidth = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 8*unit, 8*unit).x
-				var imageheight = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 8*unit, 8*unit).y
+				var imagewidth = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 8*unit, h/4).x
+				var imageheight = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 8*unit, h/4).y
 				var tipX = current_pos + linelength + 2*unit;
 
 				var minX = tipX - imagewidth / 2;
@@ -845,8 +850,8 @@ function startShow() {
 					imageY = ((minYinvert + (maxYinvert - minYinvert) / 2) - imageheight / 2) + 0.2*unit;
 				}
 			} else {
-				var imagewidth = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 10*unit, 10*unit).x
-				var imageheight = calculateAspectRatioFit(myevents[i].width, myevents[i].height, 10*unit, 10*unit).y
+				var imagewidth = calculateAspectRatioFit(myevents[i].width, myevents[i].height, w/4, 12*unit).x
+				var imageheight = calculateAspectRatioFit(myevents[i].width, myevents[i].height, w/4, 12*unit).y
 				var tipY = current_pos + linelength + 2*unit;
 				var minY = tipY - imageheight / 2;
 				var maxY = tipY + imageheight / 2;
@@ -1042,7 +1047,7 @@ function startShow() {
 		});
 	var	CymraegLink = new Kinetic.Text({
 		x : 0,
-		y : 10,
+		y : 2,
 		text : "Cymraeg",
 		fontSize : 2 * unit,
 		fontFamily : '"alternate-gothic-no-1-d",impact,sans-serif',
@@ -1052,11 +1057,12 @@ function startShow() {
 	});
 	var EnglishLink= new Kinetic.Text({
 		x : 0,
-		y : 10,
+		y : 2,
 		text : "English",
 		fontSize : 2 * unit,
 		fontFamily : '"alternate-gothic-no-1-d",impact,sans-serif',
 		fill : 'white'
+		
 
 	});
 
