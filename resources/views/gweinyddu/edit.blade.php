@@ -192,8 +192,17 @@
             </div>
         </div>
     
+        @yield('javascript')
+       
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <script type="text/javascript">
+    @endsection
+ 
+    @section('javascript')
+    <script type="text/javascript">
             Dropzone.options.dropzone =
             { dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
                 dictRemoveFile : "Remove file / Tynnu ffeil",
@@ -320,9 +329,4 @@
                     }   
             };
         </script>
-                </div>
-            </div>
-        </div>
-    </div>
-
     @endsection

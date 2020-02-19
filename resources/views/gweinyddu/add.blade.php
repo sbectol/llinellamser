@@ -89,7 +89,16 @@
             </div>
         </div>
 
-        <script type="text/javascript">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @endsection
+
+    @section('javascript')
+    <script type="text/javascript">
             Dropzone.options.dropzone =
             { dictDefaultMessage:"Drop file here to upload. / Gollwng ffeil yma i'w lanlwytho",
                 dictRemoveFile : "Remove file / Tynnu ffeil",
@@ -197,9 +206,4 @@ this.on("maxfilesexceeded", function(file) {
                     }   
             };
 </script>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @endsection
+@endsection
