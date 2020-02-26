@@ -17,7 +17,7 @@
                 <div class="card-header">Ychwanegu Digwyddiad / Add Event</div>
 
                 <div class="card-body">
-<form class="form-signin" method="POST" action="/gweinyddu/uchwanegu/">
+<form class="form-signin" method="POST" action="/gweinyddu/uchwanegu">
 
 
     {{ csrf_field() }}
